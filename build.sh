@@ -28,7 +28,7 @@ fi
 
 tc_tag="2022.08.2"
 tc_dir="$1--uclibc--stable-${tc_tag}"
-tc_tar="$1--uclibc--cortex_a7--stable-${tc_tag}.tar.bz2"
+tc_tar="$1--uclibc--cortex_a7--ssp--stable-${tc_tag}.tar.bz2"
 
 if [[ "$1" != armv5-eabi && "$1" != armv7-eabihf && "$1" != x86-i686 ]]; then
 	echo "Unsupported platform" >&2
