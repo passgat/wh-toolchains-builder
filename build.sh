@@ -43,9 +43,17 @@ if [ -f "${tc_tar}" ]; then
 	rm "${tc_tar}"
 fi
 
+commit="bfbdf4360571"
+branch="toolchains.bootlin.com-${tc_tag}-${commit}"
+
 cd buildroot
 git clean -fdx
-git checkout toolchains.bootlin.com-"${tc_tag}"
+
+if git show-ref --quiet refs/heads/"$branch"; then
+    git checkout "$branch"
+else
+    git checkout -b "$branch" "$commit"
+fi
 
 cat ../"$1"-uclibc-config > ./.config
 
